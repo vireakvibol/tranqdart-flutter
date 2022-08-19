@@ -1,0 +1,8 @@
+Package: flutter
+Version: 3.0.5-0
+Depends: bash, coreutils, curl, debianutils, file, git, unzip, xz-utils
+Section: devel
+Priority: optional
+Architecture: amd64
+Maintainer: TranDart
+Description: Flutter and Dart SDK
