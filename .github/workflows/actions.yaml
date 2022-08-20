@@ -30,6 +30,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Install all requirement
+        run: sudo apt-get update && sudo apt-get install wget xz-utils -y
+      - name: Download Flutter from official website
+        run: wget https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.0.5-stable.tar.xz
+      - name: Extract the sdk and move to the folder to usr/share
+        run: tar -xf flutter_linux_3.0.5-stable.tar.xz && mv flutter debian/usr/share
+      - name: build into deb file and move deb file to public folder
+        run: dpkg-deb --build debian && mv debian.deb flutter_3.0.5-0_amd64.deb && mv flutter_3.0.5-0_amd64.deb public
       - name: Setup Pages
         uses: actions/configure-pages@v1
       - name: Upload artifact
